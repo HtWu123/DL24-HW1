@@ -49,19 +49,22 @@ def normalize_and_jitter(img, step=32):
 
 def gradient_descent(input, model, loss, iterations=256):
     input.detach()
-    normalized_input = normalize_and_jitter(input)
-    normalized_input.requires_grad_()
-    model.eval()
+    nor_input = normalize_and_jitter(input)
+    nor_input.requires_grad_()
+    model = model.eval()
+    lr = 0.01
     for i in range(iterations):
-        normalized_input.retain_grad()
+        print(i)
+        nor_input.retain_grad()
         model.zero_grad()
-        output = model(normalized_input)
-        loss_val = loss(output)
-        loss_val.backward(retain_graph=True)
-        gradients = normalized_input.grad
-        normalized_input = normalized_input + 0.01*gradients
+        output = model(nor_input)
+        current_loss = loss(output)
+        current_loss.backward(retain_graph=True)
+        nor_input.data = nor_input.data + lr * nor_input.grad
+    return nor_input
 
-    return normalized_input
+   
+
 
 def forward_and_return_activation(model, input, module):
     """

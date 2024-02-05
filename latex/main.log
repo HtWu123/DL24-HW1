@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.3)  4 FEB 2024 18:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.3)  4 FEB 2024 22:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/htwu/Desktop/latex/main.tex
-(/Users/htwu/Desktop/latex/main.tex
+**/Users/htwu/Documents/GitHub/DL24SP-HW1/latex/main.tex
+(/Users/htwu/Documents/GitHub/DL24SP-HW1/latex/main.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -145,7 +145,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count276
 \l__pdf_internal_box=\box55
-) (./main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -162,7 +163,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
- (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count277
 \scratchdimen=\dimen160
@@ -204,45 +205,56 @@ Overfull \hbox (12.1347pt too wide) in paragraph at lines 34--35
 [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3] [4]
-<image.png, id=29, 744.7825pt x 373.395pt>
+<image.png, id=33, 744.7825pt x 373.395pt>
 File: image.png Graphic file (type png)
 <use image.png>
-Package pdftex.def Info: image.png  used on input line 159.
+Package pdftex.def Info: image.png  used on input line 162.
 (pdftex.def)             Requested size: 276.00105pt x 138.37619pt.
-<GELU.png, id=31, 387.4475pt x 279.0425pt>
+<GELU.png, id=35, 387.4475pt x 279.0425pt>
 File: GELU.png Graphic file (type png)
 <use GELU.png>
-Package pdftex.def Info: GELU.png  used on input line 177.
+Package pdftex.def Info: GELU.png  used on input line 180.
 (pdftex.def)             Requested size: 155.24895pt x 111.81087pt.
-<lrelu.png, id=32, 387.4475pt x 279.0425pt>
+<lrelu.png, id=36, 387.4475pt x 279.0425pt>
 File: lrelu.png Graphic file (type png)
 <use lrelu.png>
-Package pdftex.def Info: lrelu.png  used on input line 183.
+Package pdftex.def Info: lrelu.png  used on input line 186.
 (pdftex.def)             Requested size: 155.24895pt x 111.81087pt.
-<relu.png, id=33, 387.4475pt x 279.0425pt>
+<relu.png, id=37, 387.4475pt x 279.0425pt>
 File: relu.png Graphic file (type png)
 <use relu.png>
-Package pdftex.def Info: relu.png  used on input line 190.
+Package pdftex.def Info: relu.png  used on input line 193.
 (pdftex.def)             Requested size: 155.24895pt x 111.81087pt.
-<tanh.png, id=34, 387.4475pt x 279.0425pt>
+<tanh.png, id=38, 387.4475pt x 279.0425pt>
 File: tanh.png Graphic file (type png)
 <use tanh.png>
-Package pdftex.def Info: tanh.png  used on input line 196.
+Package pdftex.def Info: tanh.png  used on input line 199.
 (pdftex.def)             Requested size: 155.24895pt x 111.81087pt.
- [5 <./image.png>] [6 <./GELU.png> <./lrelu.png> <./relu.png> <./tanh.png>] [7] [8] (./main.aux) ) 
-Here is how much of TeX's memory you used:
- 3726 strings out of 476025
- 63384 string characters out of 5790018
- 1869388 words of memory out of 5000000
- 24158 multiletter control sequences out of 15000+600000
- 521403 words of font info for 67 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 67i,9n,77p,465b,561s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (8 pages, 234175 bytes).
-PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ [5 <./image.png>])
+Runaway argument?
+{{W_1} + \}boldsymbol{{W_2} \in } \mathbb {R}^{b \times a}\). \item I\ETC.
+! File ended while scanning use of \boldsymbol .
+<inserted text> 
+                \par 
+<*> .../Documents/GitHub/DL24SP-HW1/latex/main.tex
+                                                  
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
 
+! Emergency stop.
+<*> .../Documents/GitHub/DL24SP-HW1/latex/main.tex
+                                                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 3723 strings out of 476025
+ 63344 string characters out of 5790018
+ 1871388 words of memory out of 5000000
+ 24153 multiletter control sequences out of 15000+600000
+ 522628 words of font info for 71 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 67i,9n,77p,485b,561s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!

@@ -32,30 +32,33 @@ We would like to perform a regression task. We choose $f(\cdot) = 3(\cdot)^+ = 3
     \end{enumerate}
     
     \item[(b)] (4pt) For a single data point $(x, y)$, write down all inputs and outputs for forward pass of each layer. You can only use variable $x, y, W^{(1)}, b^{(1)}, W^{(2)}, b^{(2)}$ in your answer. (note that Linear$_i(x) = W^{(i)}x + b^{(i)}$).
-
     \subsection*{Answer.}
     \begin{enumerate}
-    \item Linear layer 1: INPUT: $x$ OUTPUT: $s_1 = W^{(1)}x + b^{(1)}$ 
-    \item $f$ function: INPUT: $s_1 = W^{(1)}x + b^{(1)}$ OUTPUT: $a_1 = f(s_1) = 3\textbf{ReLU}(s_1) = 3\textbf{ReLU}(W^{(1)}x + b^{(1)}) $
-    \item Linear layer 2: INPUT: $a_1$ OUTPUT: $s_2 = W^{(2)}a_1 + b^{(2)}$
-    \item $g$ identity function: INPUT: $W^{(2)}a_1 + b^{(2)}$ OUTPUT: $\tilde{y} = g(s_2) = W^{(2)}a_1 + b^{(2)}$
+        \item Linear layer 1: INPUT: $\boldsymbol{x}$ OUTPUT: $s_1 = \boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}}$ \\
+        $f$ function: INPUT: $s_1 = \boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}}$ OUTPUT: $a_1 = f(s_1) = 3\text{ReLU}(s_1) = 3\text{ReLU}(\boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}})$
+        \item Linear layer 2: INPUT: $3\text{ReLU}(\boldsymbol{{W}^{(1)}} \boldsymbol{x} + \boldsymbol{{b}^{(1)}})$ OUTPUT: $s_2 = \boldsymbol{{W}^{(2)}}3\text{ReLU}(\boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}}) + \boldsymbol{{b}^{(2)}}$\\
+        $g$ identity function: INPUT: $\boldsymbol{{W}^{(2)}}3\text{ReLU}(\boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}}) + \boldsymbol{{b}^{(2)}}$ OUTPUT: $\tilde{y} = g(s_2) = \boldsymbol{{W}^{(2)}}3\text{ReLU}(\boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}}) + \boldsymbol{{b}^{(2)}}$
     \end{enumerate}
     
     
     \item[(c)] (6pt) Write down the gradients calculated from the backward pass. You can only use the following variables: $x, y, W^{(1)}, b^{(1)}, W^{(2)}, b^{(2)}, \frac{\partial C}{\partial \tilde{y}}, \frac{\partial a_1}{\partial s_1}, \frac{\partial \tilde{y}}{\partial s_2}$ in your answer, where $s_1, a_1, s_2, \tilde{y}$ are the outputs of Linear$_1, f, $ Linear$_2, g$.
-
+    
+    
      \subsection*{Answer.}
       $\tilde{y} \rightarrow s_2 \rightarrow a_1 \rightarrow s_1 \rightarrow x$
      \begin{enumerate} 
-     \item \(\frac{\partial \mathcal{C}}{\partial W^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial W^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} a_1 \)
+     \item \(\frac{\partial \mathcal{C}}{\partial \boldsymbol{{W^{(2)}}}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial W^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} a_1 
+     =\frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}}3\textbf{ReLU}(W^{(1)}x + b^{(1)})  \)
     \item \(\frac{\partial \mathcal{C}}{\partial b^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial b^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}}\)
     \item \(\frac{\partial \mathcal{C}}{\partial W^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial a_{1}} \frac{\partial a_{1}}{\partial s_{1}} \frac{\partial s_{1}}{\partial W^{(1)}} =  \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} W^{(2)} \frac{\partial a_{1}}{\partial s_{1}} x \)
-
     
     \item \(\frac{\partial \mathcal{C}}{\partial b^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial a_{1}} \frac{\partial a_{1}}{\partial s_{1}} \frac{\partial s_{1}}{\partial b^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} W^{(2)} \frac{\partial a_1}{\partial s_{1}} \)
      \end{enumerate}
-        
     
+
+        
+  
+        
     \item[(d)] (2pt) Show us the elements of $\frac{\partial a_1}{\partial s_1}, \frac{\partial \tilde{y}}{\partial s_2}$ and $\frac{\partial C}{\partial \tilde{y}}$ (be careful about the dimensionality)?
     \subsection*{Answer.}
     \item From the ReLU function, we have:
@@ -210,10 +213,10 @@ We would like to perform a multi-class classification task, so we set $f = \tanh
     \end{enumerate}
     \subsection*{Answer.}
     \begin{enumerate}
-        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \mathbf{W_1} \in \mathbb{R}^{b \times a}\).\\
-        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \mathbf{W_2} \in \mathbb{R}^{b \times a}\)..
-        \item The Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(\frac{\partial h}{\partial x} = \frac{\partial (f(x) + g(x))}{\partial x} = \frac{\partial f}{\partial x} + \frac{\partial g}{\partial x} = \mathbf{W_1} + \mathbf{W_2} \in \mathbb{R}^{b \times a}\).
-        \item If \(W_1 = W_2\), then the Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(2\mathbf{W_1} \in \mathbb{R}^{b \times a}\) or \(2\mathbf{W_2} \in \mathbb{R}^{b \times a}\)
+        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \boldsymbol{{W_1} \in} \mathbb{R}^{b \times a}\).\\
+        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \boldsymbol{{W_2} \in} \mathbb{R}^{b \times a}\)..
+        \item The Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(\frac{\partial h}{\partial x} = \frac{\partial (f(x) + g(x))}{\partial x} = \frac{\partial f}{\partial x} + \frac{\partial g}{\partial x} = \boldsymbol{{W_1} + \}boldsymbol{{W_2} \in} \mathbb{R}^{b \times a}\).
+        \item If \(W_1 = W_2\), then the Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(2\boldsymbol{{W_1} \in} \mathbb{R}^{b \times a}\) or \(2\boldsymbol{{W_2} \in} \mathbb{R}^{b \times a}\)
     \end{enumerate}
     
     
@@ -225,10 +228,10 @@ We would like to perform a multi-class classification task, so we set $f = \tanh
     \end{enumerate}
     \subsection*{Answer.}
     \begin{enumerate}
-        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \mathbf{W_1} \in \mathbb{R}^{b \times a}\).\\
-        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \mathbf{W_2} \in \mathbb{R}^{c \times b}\)..
-        \item The Jacobian matrix of \(h(x) = g(f(x))\) is \(\frac{\partial h}{\partial x} = \frac{\partial g(f(x))}{\partial x} = \frac{\partial g}{\partial x} \frac{\partial f}{\partial x} = \mathbf{W_2} \mathbf{W_1} \in \mathbb{R}^{c \times a}\).
-        \item If \(W_1 = W_2\), then we can know that \(a = b = c\), and the Jacobian matrix of \(h(x) = g(f(x))\) is \(\mathbf{W_1} \mathbf{W_1} \in \mathbb{R}^{a \times a}\) or \(\mathbf{W_2} \mathbf{W_2} \in \mathbb{R}^{c \times c}\)
+        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \boldsymbol{{W_1} \in} \mathbb{R}^{b \times a}\).\\
+        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \boldsymbol{{W_2} \in} \mathbb{R}^{c \times b}\)..
+        \item The Jacobian matrix of \(h(x) = g(f(x))\) is \(\frac{\partial h}{\partial x} = \frac{\partial g(f(x))}{\partial x} = \frac{\partial g}{\partial x} \frac{\partial f}{\partial x} = \boldsymbol{{W_2} \bo}ldsymbol{{W_1} \in} \mathbb{R}^{c \times a}\).
+        \item If \(W_1 = W_2\), then we can know that \(a = b = c\), and the Jacobian matrix of \(h(x) = g(f(x))\) is \(\boldsymbol{{W_1} \bo}ldsymbol{{W_1} \in} \mathbb{R}^{a \times a}\) or \(\boldsymbol{{W_2} \bo}ldsymbol{{W_2} \in} \mathbb{R}^{c \times c}\)
     \end{enumerate}
 
 
