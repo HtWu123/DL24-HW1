@@ -40,22 +40,31 @@ We would like to perform a regression task. We choose $f(\cdot) = 3(\cdot)^+ = 3
         $g$ identity function: INPUT: $\boldsymbol{{W}^{(2)}}3\text{ReLU}(\boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}}) + \boldsymbol{{b}^{(2)}}$ OUTPUT: $\tilde{y} = g(s_2) = \boldsymbol{{W}^{(2)}}3\text{ReLU}(\boldsymbol{{W}^{(1)}}\boldsymbol{x} + \boldsymbol{{b}^{(1)}}) + \boldsymbol{{b}^{(2)}}$
     \end{enumerate}
     
-    
     \item[(c)] (6pt) Write down the gradients calculated from the backward pass. You can only use the following variables: $x, y, W^{(1)}, b^{(1)}, W^{(2)}, b^{(2)}, \frac{\partial C}{\partial \tilde{y}}, \frac{\partial a_1}{\partial s_1}, \frac{\partial \tilde{y}}{\partial s_2}$ in your answer, where $s_1, a_1, s_2, \tilde{y}$ are the outputs of Linear$_1, f, $ Linear$_2, g$.
     
     
-     \subsection*{Answer.}
-      $\tilde{y} \rightarrow s_2 \rightarrow a_1 \rightarrow s_1 \rightarrow x$
-     \begin{enumerate} 
-     \item \(\frac{\partial \mathcal{C}}{\partial \boldsymbol{{W^{(2)}}}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial W^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} a_1 
-     =\frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}}3\textbf{ReLU}(W^{(1)}x + b^{(1)})  \)
-    \item \(\frac{\partial \mathcal{C}}{\partial b^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial b^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}}\)
-    \item \(\frac{\partial \mathcal{C}}{\partial W^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial a_{1}} \frac{\partial a_{1}}{\partial s_{1}} \frac{\partial s_{1}}{\partial W^{(1)}} =  \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} W^{(2)} \frac{\partial a_{1}}{\partial s_{1}} x \)
+    %  \subsection*{Answer.}
+    %   $\tilde{y} \rightarrow s_2 \rightarrow a_1 \rightarrow s_1 \rightarrow x$
+    %  \begin{enumerate} 
+    %  \item \(\frac{\partial \mathcal{C}}{\partial \mathbf{W^{(2)}}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial W^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} a_1 
+    %  =\frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}}3\textbf{ReLU}(W^{(1)}x + b^{(1)})  \)
+    % \item \(\frac{\partial \mathcal{C}}{\partial b^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial b^{(2)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}}\)
+    % \item \(\frac{\partial \mathcal{C}}{\partial W^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial a_{1}} \frac{\partial a_{1}}{\partial s_{1}} \frac{\partial s_{1}}{\partial W^{(1)}} =  \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} W^{(2)} \frac{\partial a_{1}}{\partial s_{1}} x \)
     
-    \item \(\frac{\partial \mathcal{C}}{\partial b^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial a_{1}} \frac{\partial a_{1}}{\partial s_{1}} \frac{\partial s_{1}}{\partial b^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} W^{(2)} \frac{\partial a_1}{\partial s_{1}} \)
-     \end{enumerate}
-    
-
+    % \item \(\frac{\partial \mathcal{C}}{\partial b^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} \frac{\partial s_{2}}{\partial a_{1}} \frac{\partial a_{1}}{\partial s_{1}} \frac{\partial s_{1}}{\partial b^{(1)}} = \frac{\partial \mathcal{C}}{\partial \tilde{y}} \frac{\partial \tilde{y}}{\partial s_{2}} W^{(2)} \frac{\partial a_1}{\partial s_{1}} \)
+    %  \end{enumerate}
+    \subsection*{Answer.}
+    \begin{align*}
+    \frac{\partial C}{\partial \boldsymbol{{W^{(2)}}}} &= \frac{\partial C}{\partial \boldsymbol{{\tilde y}}} \cdot \frac{\partial \boldsymbol{{\tilde y}}}{\partial \boldsymbol{s_2}}\cdot \frac{\partial \boldsymbol{s_2}}{\partial \boldsymbol{W^{(2)}}} \\
+    &= \frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}} \cdot \boldsymbol{a_1}\\
+    &= \frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}} \cdot 3ReLU(\boldsymbol{W^{(1)}}\boldsymbol{x} + \boldsymbol{b^{(1)}})\\
+    \frac{\partial C}{\partial \boldsymbol{b^{(2)}}} &= \frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}}\cdot \frac{\partial \boldsymbol{s_2}}{\partial \boldsymbol{b^{(2)}}}\\
+    &= \frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}}\\
+    \frac{\partial C}{\partial \boldsymbol{W^{(1)}}} &= \frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}}\cdot \frac{\partial \boldsymbol{s_2}}{\partial \boldsymbol{a_1}}\cdot \frac{\partial \boldsymbol{a_1}}{\partial \boldsymbol{s_1}}\cdot \frac{\partial \boldsymbol{s_1}}{\partial \boldsymbol{W^{(1)}}}\\
+    &= \frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}}\cdot \boldsymbol{W^{(2)}} \cdot \frac{\partial \boldsymbol{a_1}}{\partial \boldsymbol{s_1}} \cdot \boldsymbol{x}\\
+    \frac{\partial C}{\partial \boldsymbol{b^{(1)}}} &=\frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}}\cdot \frac{\partial \boldsymbol{s_2}}{\partial \boldsymbol{a_1}}\cdot \frac{\partial \boldsymbol{a_1}}{\partial \boldsymbol{s_1}}\cdot \frac{\partial \boldsymbol{s_1}}{\partial \boldsymbol{b^{(1)}}}\\
+    &= \frac{\partial C}{\partial \boldsymbol{\tilde y}} \cdot \frac{\partial \boldsymbol{\tilde y}}{\partial \boldsymbol{s_2}}\cdot \boldsymbol{W^{(2)}} \cdot \frac{\partial \boldsymbol{a_1}}{\partial \boldsymbol{s_1}}
+    \end{align*}
         
   
         
@@ -103,13 +112,14 @@ We would like to perform a multi-class classification task, so we set $f = \tanh
         \[ a_1 = f(s_1) = \tanh(s_1) = \tanh(W^{(1)}x + b^{(1)}) \]
         For \(g = \sigma\), replace the \(g\) identity function step with:
         \[ \tilde{y} = g(s_2) = \sigma(s_2) = \frac{1}{1 + \exp(-s_2)}  \]
+        where \[s_2 = W^{(2)}\tanh(W^{(1)}x + b^{(1)}) + b^{(2)}\]
         \item {Changes in (c) Backward Pass Equations:} \\
         There is no change in the backward pass equations, only the function changes, but they use the same equations.
         \item{Changes in (d):}\\
         % \[\frac{\partial a_1}{\partial s_1} = 1 - \text{tanh}^2(s_1)\]\\
         % \[\frac{\partial \tilde{y}}{\partial s_2} = \sigma(s_1)\cdot (1- \sigma(s_1))\]
-        The derivative \( \frac{\partial a_1}{\partial s_1} \) is a diagonal matrix of dimension \( m \times m \), where each diagonal element is \( 1-\tanh^2((s_1)_i) \).
-        The derivative \( \frac{\partial \tilde{y}}{\partial s_2} \) is a diagonal matrix of dimension \( K \times K \), where each diagonal element is \( \sigma((s_2)_i)(1 - \sigma((s_2)_i)) \).
+        The derivative \( \frac{\partial \boldsymbol{a_1}}{\partial \boldsymbol{s_1}} \) is a diagonal matrix of dimension \( m \times m \), where each diagonal element is \( 1-\tanh^2((s_1)_i) \).
+        The derivative \( \frac{\partial \boldsymbol{\tilde{y}}}{\partial \boldsymbol{s_2}} \) is a diagonal matrix of dimension \( K \times K \), where each diagonal element is \( \sigma((s_2)_i)(1 - \sigma((s_2)_i)) \).
 
     \end{enumerate}
 
@@ -128,7 +138,7 @@ We would like to perform a multi-class classification task, so we set $f = \tanh
         The derivative \( \frac{\partial a_1}{\partial s_1} \) is a diagonal matrix of dimension \( m \times m \), where each diagonal element is \( 1-\tanh^2((s_1)_i) \).
         The derivative \( \frac{\partial \tilde{y}}{\partial s_2} \) is a diagonal matrix of dimension \( K \times K \), where each diagonal element is \( \sigma((s_2)_i)(1 - \sigma((s_2)_i)) \).
         The derivative \( \frac{\partial C}{\partial \tilde{y}} \in \mathbb{R}^{1 \times K} \) will change to: 
-        \[\left( \frac{\partial \mathcal{C}}{\partial \tilde{y}} \right)_{i} = \frac{1}{K} \left( \frac{y_i - \tilde{y}_i}{\tilde{y}_i (\tilde{y}_i - 1)} \right)
+        \[\left( \frac{\partial \mathcal{C}}{\partial \boldsymbol{\tilde{y}}} \right)_{i} = \frac{1}{K} \left( \frac{y_i - \tilde{y}_i}{\tilde{y}_i (\tilde{y}_i - 1)} \right)
 \]
 
         
@@ -213,10 +223,10 @@ We would like to perform a multi-class classification task, so we set $f = \tanh
     \end{enumerate}
     \subsection*{Answer.}
     \begin{enumerate}
-        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \boldsymbol{{W_1} \in} \mathbb{R}^{b \times a}\).\\
-        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \boldsymbol{{W_2} \in} \mathbb{R}^{b \times a}\)..
-        \item The Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(\frac{\partial h}{\partial x} = \frac{\partial (f(x) + g(x))}{\partial x} = \frac{\partial f}{\partial x} + \frac{\partial g}{\partial x} = \boldsymbol{{W_1} + \}boldsymbol{{W_2} \in} \mathbb{R}^{b \times a}\).
-        \item If \(W_1 = W_2\), then the Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(2\boldsymbol{{W_1} \in} \mathbb{R}^{b \times a}\) or \(2\boldsymbol{{W_2} \in} \mathbb{R}^{b \times a}\)
+        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \boldsymbol{W_1} \in \mathbb{R}^{b \times a}\).\\
+        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \boldsymbol{W_2} \in \mathbb{R}^{b \times a}\)..
+        \item The Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(\frac{\partial h}{\partial x} = \frac{\partial (f(x) + g(x))}{\partial x} = \frac{\partial f}{\partial x} + \frac{\partial g}{\partial x} = \boldsymbol{W_1} + \boldsymbol{W_2} \in \mathbb{R}^{b \times a}\).
+        \item If \(W_1 = W_2\), then the Jacobian matrix of \(h(x) = f(x) + g(x)\) is \(2\boldsymbol{W_1} \in \mathbb{R}^{b \times a}\) or \(2\boldsymbol{W_2} \in \mathbb{R}^{b \times a}\)
     \end{enumerate}
     
     
@@ -228,10 +238,10 @@ We would like to perform a multi-class classification task, so we set $f = \tanh
     \end{enumerate}
     \subsection*{Answer.}
     \begin{enumerate}
-        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \boldsymbol{{W_1} \in} \mathbb{R}^{b \times a}\).\\
-        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \boldsymbol{{W_2} \in} \mathbb{R}^{c \times b}\)..
-        \item The Jacobian matrix of \(h(x) = g(f(x))\) is \(\frac{\partial h}{\partial x} = \frac{\partial g(f(x))}{\partial x} = \frac{\partial g}{\partial x} \frac{\partial f}{\partial x} = \boldsymbol{{W_2} \bo}ldsymbol{{W_1} \in} \mathbb{R}^{c \times a}\).
-        \item If \(W_1 = W_2\), then we can know that \(a = b = c\), and the Jacobian matrix of \(h(x) = g(f(x))\) is \(\boldsymbol{{W_1} \bo}ldsymbol{{W_1} \in} \mathbb{R}^{a \times a}\) or \(\boldsymbol{{W_2} \bo}ldsymbol{{W_2} \in} \mathbb{R}^{c \times c}\)
+        \item The Jacobian matrix of \(f\) is \(\frac{\partial f}{\partial x} = \boldsymbol{W_1} \in \mathbb{R}^{b \times a}\).\\
+        And the Jacobian matrix of \(g\) is \(\frac{\partial g}{\partial x} = \boldsymbol{W_2} \in \mathbb{R}^{c \times b}\)..
+        \item The Jacobian matrix of \(h(x) = g(f(x))\) is \(\frac{\partial h}{\partial x} = \frac{\partial g(f(x))}{\partial x} = \frac{\partial g}{\partial x} \frac{\partial f}{\partial x} = \boldsymbol{W_2} \boldsymbol{W_1} \in \mathbb{R}^{c \times a}\).
+        \item If \(W_1 = W_2\), then we can know that \(a = b = c\), and the Jacobian matrix of \(h(x) = g(f(x))\) is \(\boldsymbol{W_1} \boldsymbol{W_1} \) or \(\boldsymbol{W_2} \boldsymbol{W_2} \) or \(\boldsymbol{W_1} \boldsymbol{W_2}\)
     \end{enumerate}
 
 
