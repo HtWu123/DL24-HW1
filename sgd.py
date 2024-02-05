@@ -45,11 +45,23 @@ def normalize_and_jitter(img, step=32):
     )
 
 
+
+
 def gradient_descent(input, model, loss, iterations=256):
-    
-    return input  # IMPLEMENT ME
+    input.detach()
+    normalized_input = normalize_and_jitter(input)
+    normalized_input.requires_grad_()
+    model.eval()
+    for i in range(iterations):
+        normalized_input.retain_grad()
+        model.zero_grad()
+        output = model(normalized_input)
+        loss_val = loss(output)
+        loss_val.backward(retain_graph=True)
+        gradients = normalized_input.grad
+        normalized_input = normalized_input + 0.01*gradients
 
-
+    return normalized_input
 
 def forward_and_return_activation(model, input, module):
     """
@@ -60,6 +72,7 @@ def forward_and_return_activation(model, input, module):
     to see what intermediate activations activate on.
     """
     features = []
+
 
     def hook(model, input, output):
         features.append(output)
